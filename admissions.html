@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions: MarketMinds</title>
+  <style>
+        :root {
+  --dark-purple: #14034C;
+  --light-blue: #50ABFF;
+  --yellow: #FDC22B;
+  --orange: #FF914D;
+  --white: #FFFFFF;
+  --navy-blue: #1A4091;
+  --gray-bg: #FFFFFF;
+  --font-main: 'Montserrat', Arial, sans-serif;
+  --transition: 0.3s cubic-bezier(0.4,0.1,0.2,1);
+  --main-content-width: 1100px;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background: #fff;
+  color: var(--dark-purple);
+  scroll-behavior: smooth;
+  min-width: 0;
+  width: 100%;
+}
+header {
+  background: var(--dark-purple);
+  color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px 0 rgba(20,3,76,0.08);
+}
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+}
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+.navbar-logo img {
+  height: 44px;
+  width: auto;
+  border-radius: 8px;
+  background: var(--white);
+  object-fit: contain;
+  box-shadow: 0 2px 8px 0 rgba(20,3,76,0.08);
+}
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.navbar-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  transition: color var(--transition);
+  position: relative;
+  padding: 0.25em 0.5em;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.navbar-links a.active, .navbar-links a:hover {
+  background: var(--light-blue);
+  color: var(--dark-purple);
+}
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  margin-left: 1rem;
+}
+.navbar-toggle span {
+  display: block;
+  height: 4px;
+  width: 28px;
+  background: var(--white);
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+@media (max-width: 860px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+  .navbar-links {
+    position: absolute;
+    right: 0;
+    top: 64px;
+    flex-direction: column;
+    background: var(--dark-purple);
+    width: 100vw;
+    max-width: 320px;
+    gap: 0.5rem;
+    box-shadow: 0 6px 24px 0 rgba(20,3,76,0.13);
+    display: none;
+    align-items: flex-start;
+    padding: 1.5rem 2rem 2rem 2rem;
+  }
+  .navbar-links.open {
+    display: flex;
+  }
+  .navbar-toggle {
+    display: flex;
+  }
+}
+footer {
+  background: #0D2B6D;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  height: 150px;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: url('classroom-footer.jpg') center/cover no-repeat;
+  opacity: 0.65;
+  mix-blend-mode: multiply;
+  z-index: 0;
+  pointer-events: none;
+}
+.footer-main-row {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 110px;
+  min-height: 0;
+}
+.footer-socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-left: 20px;
+}
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-social-icon {
+  background: transparent;
+  border-radius: 8px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.footer-social-icon img {
+  width: 80px;
+  height: 80px;
+  display: block;
+  background: none;
+  border-radius: 0;
+}
+.footer-social-link:hover .footer-social-icon,
+.footer-social-link:focus .footer-social-icon {
+  border-color: #d9e8ff;
+  background: #232b53;
+}
+.footer-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-logo {
+  width: 100px;
+  height: auto;
+  margin-right: 16px;
+}
+.footer-center-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.footer-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.07em;
+  line-height: 1.1;
+  margin-bottom: 2px;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.footer-tagline {
+  font-size: 16px;
+  font-weight: 600;
+  color: #d9e8ff;
+  letter-spacing: 0.01em;
+  margin-top: 3px;
+}
+.footer-backtotop-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+  height: 100%;
+}
+.footer-backtotop {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 2px;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.footer-backtotop:hover,
+.footer-backtotop:focus {
+  color: #d9e8ff;
+  text-decoration: underline;
+}
+@media (max-width: 900px) {
+  .footer-main-row {
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    height: auto;
+    width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .footer-socials, .footer-backtotop-wrap {
+    padding: 0;
+  }
+  .footer-center {
+    margin-bottom: 4px;
+  }
+  .footer-logo {
+    width: 70px;
+  }
+  .footer-title {
+    font-size: 18px;
+  }
+  .footer-tagline {
+    font-size: 13px;
+  }
+}
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, var(--dark-purple) 60%, var(--light-blue) 100%);
+  overflow: visible;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero {
+  width: 100%;
+  position: relative;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, var(--dark-purple) 60%, var(--light-blue) 100%);
+  overflow: visible;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 1000px;
+  height: 250px;
+  display: flex;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.section-cards-uniform {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  align-items: center;
+  width: 100%;
+}
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: var(--font-main);
+  margin-bottom: 16px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.section-title.orange { color: #FF914D; }
+
+.section-break {
+  width: 3000px;
+  max-width: 97vw;
+  height: 5px;
+  margin: 48px 0 24px 0;
+  background: linear-gradient(90deg, #1A4091 0%, #8b8b6f 60%, #FDC22B 100%);
+  border-radius: 2px;
+  display: block;
+}
+
+/* EVENTS-STYLE CARD LAYOUT */
+.member-cards-row, .leadership-cards-row {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 0 auto;
+}
+.event-card-outer {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 38px 0 rgba(26,64,145,0.09), 0 1.5px 8px 0 rgba(80,171,255,0.07);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+.event-card-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 32px 36px;
+  min-height: 160px;
+  max-width: 400px;
+}
+.event-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+}
+.event-img-alone {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.event-img img,
+.event-img-alone img {
+  width: 100px;
+  height: 100px;
+  border-radius: 17px;
+  object-fit: cover;
+  background: #e9eff9;
+  box-shadow: 0 2px 8px 0 rgba(80,171,255,0.13);
+  flex-shrink: 0;
+  margin-right: 0;
+}
+
+.member-card-title,
+.leadership-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.member-card-desc,
+.leadership-card-desc {
+  color: #14034C;
+  font-size: 1.01rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+.member-card-qrdesc,
+.leadership-card-qrdesc {
+  font-size: 0.99rem;
+  color: #14034C;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 500;
+  margin-top: 7px;
+}
+
+/* Remove image column for member/leadership cards that don't have image */
+.event-card-inner .event-card-content {
+  min-width: 0;
+}
+
+/* For cards without image (2nd/3rd card), hide the image cell with display:none in HTML if necessary */
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .member-cards-row, .leadership-cards-row { flex-direction: column; gap: 26px; max-width: 98vw; }
+  .event-card-inner { padding: 24px 10px; max-width: 97vw; }
+}
+@media (max-width: 700px) {
+  .event-card-inner { flex-direction: column; align-items: center; padding: 14px 3vw; }
+  .event-img img, .event-img-alone img { width: 64px; height: 64px; }
+}
+.section-title {
+  font-size: 1.7rem;
+  font-weight: 900;
+  font-family: var(--font-main);
+  margin-bottom: 16px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+.section-title.orange { color: #FF914D; }
+.section-strong-title {
+  font-size: 2.1rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  line-height: 1.13;
+  padding-bottom: 2px;
+  text-shadow: 0 3px 18px rgba(26,64,145,0.05);
+}
+@media (max-width: 900px) {
+  .section-title, .section-strong-title { font-size: 1.27rem; }
+}
+@media (max-width: 600px) {
+  .section-title, .section-strong-title { font-size: 1.08rem; }
+}
+
+
+.navbar-links button {
+  background: none;
+  border: none;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  transition: color var(--transition), background var(--transition);
+  position: relative;
+  padding: 0.25em 0.5em;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+}
+
+.navbar-links button:hover,
+.navbar-links button.active {
+  background: var(--light-blue);
+  color: var(--dark-purple);
+}
+  </style>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <img src="logo.png" alt="MarketMinds Logo" id="header-logo" />
+    </div>
+    <div class="navbar-toggle" id="navbar-toggle" aria-label="Open Menu" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="navbar-links" id="navbar-links">
+   <button id="home" data-section="home">Home</button>
+      <script>
+        document.getElementById("home").onclick = function() {
+          window.location.href = "homePage.html";
+        };
+      </script>
+      <button id="aboutus" data-section="aboutUs">About Us</button>
+      <script>
+        document.getElementById("aboutus").onclick = function() {
+          window.location.href = "aboutUs.html";
+        };
+      </script>
+      <button id="events" data-section="events">Events</button>
+      <script>
+        document.getElementById("events").onclick = function() {
+          window.location.href = "events.html";
+        };
+      </script>
+      <button id="leadership" data-section="leadership">Leadership</button>
+      <script>
+        document.getElementById("leadership").onclick = function() {
+          window.location.href = "leaderS_hip.html";
+        };
+      </script>
+      <button id="admissions" data-section="admissions">Admissions</button>
+      <script>
+        document.getElementById("admissions").onclick = function() {
+          window.location.href = "admissions.html";
+        };
+      </script>
+      <button id="chapters" data-section="chapters">Chapters</button>
+      <script>
+        document.getElementById("chapters").onclick = function() {
+          window.location.href = "chapters.html";
+        };
+      </script>
+      <button id="hintonYEA" data-section="hintonYEA">HintonYEA</button>
+      <script>
+        document.getElementById("hintonYEA").onclick = function() {
+          window.location.href = "hintonYEA.html";
+        };
+      </script>
+      <button id="contact" data-section="contact">Contact Us</button>
+      <script>
+        document.getElementById("contact").onclick = function() {
+          window.location.href = "contact.html";
+        };
+      </script>
+
+    </div>
+  </nav>
+</header>
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="admissionsBanner.jpg" style="width:800px; margin-left:50px" alt="Events Banner" class="hero-img">
+      <img src="admissionsBanner.jpg" style="margin-left:50px" alt="Events Banner" class="hero-img">
+      <img src="admissionsBanner.jpg" style="margin-left:50px" alt="Events Banner" class="hero-img">
+
+    </div>  
+  </section>
+  <div style="margin-left: 61px; height:50px; width:1400px; background: #fff;"></div>
+
+  <!-- Become a Member Section - Styled Like the Example Screenshot -->
+<div class="section-cards-uniform" style="margin-top:36px;">
+    <div class="section-strong-title section-title orange" style="margin-bottom:24px; text-align:left; width:100%; max-width:1200px;">Become a Member</div>
+    <div class="member-cards-row">
+      <div class="member-card event-card-outer">
+        <div class="event-card-inner">
+          <div class="event-img event-img-alone">
+            <img style= "width:100px;height:100px" src="membership.png" alt="Membership QR" />
+          </div>
+          <div class="event-card-content">
+            <div class="member-card-title">Fill out membership form</div>
+            <div  class="member-card-desc">
+              Start your journey with MarketMinds by filling out our leadership form, which helps us understand your interests and goals. This step ensures we place you in the best position to grow and contribute.
+              <div class="member-card-qrdesc" style="margin-top:10px;">* bit of body little bit of body text</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="member-card event-card-outer">
+        <div class="event-card-inner">
+          <div class="event-card-content">
+            <div class="member-card-title">Wait for Approval</div>
+            <div class="member-card-desc">
+              Once submitted, applications are reviewed within a couple of weeks. After approval, you’ll be added to all our groups and social platforms to stay fully connected.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="member-card event-card-outer">
+        <div class="event-card-inner">
+          <div class="event-card-content">
+            <div class="member-card-title">Be an active member
+            </div>
+            <div class="member-card-desc">
+             As a member, you’ll take part in workshops, competitions, and events while building valuable marketing and leadership skills. Active engagement is the best way to maximize your experience and opportunities within MarketMinds.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-break"></div>
+    <div style="margin-left: 61px; height:50px; width:1400px; background: #fff;"></div>
+
+  <!-- Join our leadership Section - Styled Like the Example Screenshot -->
+  <div class="section-cards-uniform">
+    <div class="section-strong-title section-title orange" style="margin-bottom:24px; text-align:left; width:100%; max-width:1200px;">Join our leadership</div>
+    <div class="leadership-cards-row">
+      <div class="leadership-card event-card-outer">
+        <div class="event-card-inner">
+          <div class="event-img event-img-alone">
+            <img src="Auxiliary.png" alt="Aux QR" />
+          </div>
+          <div class="event-card-content">
+            <div class="leadership-card-title" style="color:#FF914D;">Auxiliary Board</div>
+            <div class="leadership-card-desc">
+              The Auxiliary Board allows students to step into leadership by assisting officers with recruitment, fundraising, and event planning. Each month, high-performing Auxiliary members are promoted into Officer roles, making this a direct path to greater responsibility. Applications open once a month, so keep an eye out. What we look for:
+              <div class="leadership-card-qrdesc" style="margin-top:10px;">
+                * Strong communication and collaboration skills<br>
+                * Reliability and follow-through on commitments<br>
+                * Creativity and initiative in problem-solving
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="leadership-card event-card-outer">
+        <div class="event-card-inner">
+          <div class="event-card-content">
+            <div class="leadership-card-title" style="color:#1A4091;">HS Directory Board</div>
+            <div class="leadership-card-desc">
+              Our Directory Board is the backbone of MarketMinds, composed of dedicated high school leaders who oversee operations and guide middle school officers. To be considered, you must reach out directly to the current Directory Board. What we look for: 
+              <div class="leadership-card-qrdesc" style="margin-top:10px;">
+                * Proven leadership and organizational skills
+                <br>
+                * Experience in marketing, sales, or event management
+                <br>
+                * Commitment to growing MarketMinds’ impact locally and nationally
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:40px;"></div>
+    <!-- FOOTER -->
+    <div style="height: 50px; background: #fff;"></div>
+    <footer>
+      <div class="footer-bg"></div>
+      <div class="footer-main-row">
+        <!-- Left: Instagram Icon Only -->
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/joinmarketminds" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+            <span class="footer-social-icon">
+              <img src="logo-insta.png" alt="Instagram" />
+            </span>
+          </a>
+          <a href="https://x.com/joinMarketMinds" style="margin-left: 30px;"class="footer-social-link" aria-label="Twitter" target="_blank" rel="noopener">
+            <span class="footer-social-icon">
+              <img src="x-social-media-round-icon.webp" alt="Instagram" />
+            </span>
+          </a>
+        </div>
+        <!-- Center: Logo + Text -->
+        <div class="footer-center">
+          <img src="marketminds-logo-lightbulb-brain.png" alt="MarketMinds Logo" class="footer-logo" />
+          <div class="footer-center-text">
+            <div class="footer-title">MARKETMINDS</div>
+            <div class="footer-tagline">Drive the Next Big Thing</div>
+          </div>
+        </div>
+        <!-- Right: Back to Top -->
+        <div class="footer-backtotop-wrap">
+          <a href="#" class="footer-backtotop" id="backtotop-btn">Back to Top</a>
+        </div>
+      </div>
+    </footer>  
+    <script>
+      
+    </script>
+  
+</body>
+</html>

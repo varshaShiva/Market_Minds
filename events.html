@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Events: MarketMinds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MarketMinds - Empowering the Next Generation of Market Leaders. A community for young entrepreneurs, innovators, and changemakers.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style> 
+    :root {
+  --dark-purple: #14034C;
+  --light-blue: #50ABFF;
+  --yellow: #FDC22B;
+  --orange: #FF914D;
+  --white: #FFFFFF;
+  --navy-blue: #1A4091;
+  --gray-bg: #FFFFFF;
+  --font-main: 'Montserrat', Arial, sans-serif;
+  --transition: 0.3s cubic-bezier(0.4,0.1,0.2,1);
+  --main-content-width: 1100px;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background: #fff;
+  color: var(--dark-purple);
+  scroll-behavior: smooth;
+  min-width: 0;
+  width: 100%;
+}
+
+header {
+  background: var(--dark-purple);
+  color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px 0 rgba(20,3,76,0.08);
+}
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+}
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+.navbar-logo img {
+  height: 44px;
+  width: auto;
+  border-radius: 8px;
+  background: var(--white);
+  object-fit: contain;
+  box-shadow: 0 2px 8px 0 rgba(20,3,76,0.08);
+}
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.navbar-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  transition: color var(--transition);
+  position: relative;
+  padding: 0.25em 0.5em;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.navbar-links a.active, .navbar-links a:hover {
+  background: var(--light-blue);
+  color: var(--dark-purple);
+}
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  margin-left: 1rem;
+}
+.navbar-toggle span {
+  display: block;
+  height: 4px;
+  width: 28px;
+  background: var(--white);
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+@media (max-width: 860px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+  .navbar-links {
+    position: absolute;
+    right: 0;
+    top: 64px;
+    flex-direction: column;
+    background: var(--dark-purple);
+    width: 100vw;
+    max-width: 320px;
+    gap: 0.5rem;
+    box-shadow: 0 6px 24px 0 rgba(20,3,76,0.13);
+    display: none;
+    align-items: flex-start;
+    padding: 1.5rem 2rem 2rem 2rem;
+  }
+  .navbar-links.open {
+    display: flex;
+  }
+  .navbar-toggle {
+    display: flex;
+  }
+}
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, var(--dark-purple) 60%, var(--light-blue) 100%);
+  overflow: visible;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero {
+  width: 100%;
+  position: relative;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, var(--dark-purple) 60%, var(--light-blue) 100%);
+  overflow: visible;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 1000px;
+  height: 250px;
+  display: flex;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* FLEX and SIDEBAR */
+.main-flex {
+  display: flex;
+  flex-direction: row;
+  max-width: 1400px;
+  margin: 0 auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100vw;
+  min-height: 800px;
+  background: var(--gray-bg);
+}
+.side-menu {
+  min-width: 160px;
+  width: 180px;
+  margin: 60px 32px 0 32px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(26,64,145,0.09);
+  padding: 24px 14px;
+  height: fit-content;
+  font-family: var(--font-main);
+  position: sticky;
+  top: 120px;
+}
+.side-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.side-menu li {
+  margin-bottom: 10px;
+}
+.menu-link {
+  display: block;
+  color: #1A4091;
+  font-size: 1.08rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 7px 13px;
+  transition: background 0.2s, color 0.2s;
+}
+.menu-link.active, .menu-link:hover {
+  background: #FDC22B;
+  color: #14034C;
+  font-weight: 900;
+}
+
+/* CONTENT SECTIONS */
+.sections {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  margin-top: 60px;
+}
+.section-cards-uniform {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  align-items: center;
+  width: 100%;
+}
+.section-card-uniform {
+  background: #f6f6f6;
+  border-radius: 22px;
+  box-shadow: 0 4px 18px 0 rgba(26,64,145,0.07);
+  padding: 34px 36px;
+  margin: 0 auto 18px auto;
+  width: 100%;
+  max-width: 720px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: var(--font-main);
+  margin-bottom: 16px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.section-title.navy { color: #1A4091; }
+.section-title.orange { color: #FF914D; }
+.section-title.honor-orange { color: #FF914D; margin-bottom: 0; }
+.section-desc {
+  color: #14034C;
+  font-size: 1.05rem;
+  font-family: var(--font-main);
+  text-align: center;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+.section-break {
+  width: 1100px;
+  max-width: 97vw;
+  height: 5px;
+  margin: 48px 0 24px 0;
+  background: linear-gradient(90deg, #1A4091 0%, #8b8b6f 60%, #FDC22B 100%);
+  border-radius: 2px;
+  display: block;
+}
+
+/* Event Desc Image/Text Row */
+.event-desc-with-img {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+}
+.event-img-main {
+  width: 170px;
+  height: 120px;
+  border-radius: 16px;
+  background: #e9eff9;
+  object-fit: cover;
+}
+.event-desc-text {
+  flex: 1;
+  font-size: 1.12rem;
+  color: #222;
+  text-align: left;
+  font-family: var(--font-main);
+}
+
+/* PRETTIER BLUE EVENT GALLERY CAROUSEL */
+.event-gallery-carousel.blue-carousel {
+  background: var(--navy-blue);
+  box-shadow: 0 6px 24px 0 rgba(26,64,145,0.13);
+  border-radius: 24px;
+  padding: 24px 28px;
+  min-height: 170px;
+  margin-bottom: 32px;
+  margin-top: 0;
+}
+.gallery-arrow {
+  background: #fff;
+  color: #1A4091;
+  border: none;
+  font-size: 2.3rem;
+  font-weight: bold;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, opacity 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin: 0 20px;
+  box-shadow: 0 2px 8px 0 rgba(80,171,255,0.10);
+  opacity: 1;
+}
+.gallery-arrow:disabled {
+  background: #cfd4e2;
+  color: #fff;
+  opacity: 0.3;
+  cursor: default;
+}
+.gallery-arrow:hover:not(:disabled),
+.gallery-arrow:focus:not(:disabled) {
+  background: #FDC22B;
+  color: #1A4091;
+  box-shadow: 0 4px 16px 0 rgba(253,194,43,0.10);
+}
+
+.gallery-images {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+  min-width: 0;
+  overflow: hidden;
+  margin: 0 0;
+  padding: 0 6px;
+}
+.event-gallery-img {
+  width: 150px;
+  height: 110px;
+  border-radius: 16px;
+  object-fit: cover;
+  background: #e9eff9;
+  transition: transform 0.12s, box-shadow 0.12s;
+  flex-shrink: 0;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px 0 rgba(80,171,255,0.10);
+}
+
+@media (max-width: 600px) {
+  .event-gallery-img { width: 60px; height: 44px; }
+  .gallery-images { width: 150px; gap: 15px; }
+  .event-img-main { width: 56px; height: 40px; }
+  .gallery-arrow { width: 28px; height: 28px; font-size: 1.1rem; }
+}
+/* Add/replace these rules for the Recap of Events carousel gallery */
+/* This will make recap images larger than other carousels */
+.event-gallery-carousel.recap-carousel .event-gallery-img {
+  width: 220px;
+  height: 150px;
+  border-radius: 18px;
+  align-items: center;
+  object-fit: cover;
+  background: #e9eff9;
+  box-shadow: 0 2px 8px 0 rgba(80,171,255,0.10);
+  transition: transform 0.12s, box-shadow 0.12s;
+  flex-shrink: 0;
+  border: 2px solid #fff;
+}
+
+.event-gallery-carousel.recap-carousel .gallery-images {
+  width: 740px;
+  gap: 44px;
+  margin-left: 170px;
+}
+
+@media (max-width: 900px) {
+  .event-gallery-carousel.recap-carousel .event-gallery-img { width: 130px; height: 90px; }
+  .event-gallery-carousel.recap-carousel .gallery-images { width: 400px; gap: 14px; }
+}
+
+@media (max-width: 600px) {
+  .event-gallery-carousel.recap-carousel .event-gallery-img { width: 80px; height: 54px; }
+  .event-gallery-carousel.recap-carousel .gallery-images { width: 160px; gap: 8px; }
+}
+/* Recap of Events Section */
+.recap-events-title {
+  background: #1A4091;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 9px 36px;
+  border-radius: 9px;
+  display: block;
+  margin-top: 32px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+.recap-events-title.centered {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.recap-events-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto 28px auto;
+}
+.recap-events-left {
+  flex: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.recap-events-desc {
+  font-size: 1.09rem;
+  color: #14034C;
+  font-family: var(--font-main);
+  text-align: left;
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 14px;
+  min-width: 120px;
+  max-width: 210px;
+  box-shadow: 0 2px 8px 0 rgba(26,64,145,0.07);
+}
+.recap-events-right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.recap-img {
+  width: 110px;
+  height: 80px;
+  border-radius: 11px;
+  object-fit: cover;
+  background: #e9eff9;
+  margin-bottom: 5px;
+}
+
+footer {
+  background: #0D2B6D;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  height: 150px;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: url('classroom-footer.jpg') center/cover no-repeat;
+  opacity: 0.65;
+  mix-blend-mode: multiply;
+  z-index: 0;
+  pointer-events: none;
+}
+.footer-main-row {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 110px;
+  min-height: 0;
+}
+.footer-socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-left: 20px;
+}
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-social-icon {
+  background: transparent;
+  border-radius: 8px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.footer-social-icon img {
+  width: 80px;
+  height: 80px;
+  display: block;
+  background: none;
+  border-radius: 0;
+}
+.footer-social-link:hover .footer-social-icon,
+.footer-social-link:focus .footer-social-icon {
+  border-color: #d9e8ff;
+  background: #232b53;
+}
+.footer-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-logo {
+  width: 100px;
+  height: auto;
+  margin-right: 16px;
+}
+.footer-center-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.footer-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.07em;
+  line-height: 1.1;
+  margin-bottom: 2px;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.footer-tagline {
+  font-size: 16px;
+  font-weight: 600;
+  color: #d9e8ff;
+  letter-spacing: 0.01em;
+  margin-top: 3px;
+}
+.footer-backtotop-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+  height: 100%;
+}
+.footer-backtotop {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 2px;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.footer-backtotop:hover,
+.footer-backtotop:focus {
+  color: #d9e8ff;
+  text-decoration: underline;
+}
+@media (max-width: 900px) {
+  .footer-main-row { flex-direction: column; justify-content: center; gap: 16px; height: auto; }
+  .footer-socials, .footer-backtotop-wrap { padding: 0; }
+  .footer-center { margin-bottom: 4px; }
+}
+@media (max-width: 1200px) {
+  .main-flex { max-width: 100vw; }
+  .section-card-uniform, .section-cards-uniform { max-width: 98vw; }
+  .structure-cards { gap: 10px; }
+  .side-menu { margin: 30px 0 0 0; }
+  .section-break { width: 97vw; }
+}
+@media (max-width: 900px) {
+  .main-flex { flex-direction: column; gap: 16px; }
+  .side-menu { width: 100%; min-width: 0; margin: 0 0 18px 0; }
+  .section-cards-uniform { gap: 16px; }
+  .section-card-uniform { padding: 18px 6px; }
+  .structure-cards { flex-direction: column; gap: 8px; }
+  .purpose-flex, .unique-flex { flex-direction: column; gap: 12px; }
+  .recap-events-flex { flex-direction: column; gap: 12px; }
+}
+@media (max-width: 600px) {
+  .section-card-uniform { padding: 8px 2px; }
+  .section-title { font-size: 1.03rem; }
+  .menu-link { font-size: 1rem; }
+  .purpose-img, .unique-imgs img { width: 48px; height: 32px; }
+  .honor-letter { font-size: 1.2rem; min-width: 38px; }
+  .honor-card { padding: 6px 7px 8px 7px; }
+  .event-img-main, .event-gallery-img { width: 60px; height: 44px; }
+  .recap-img { width: 60px; height: 44px; }
+}
+
+
+.navbar-links button {
+  background: none;
+  border: none;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  transition: color var(--transition), background var(--transition);
+  position: relative;
+  padding: 0.25em 0.5em;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+}
+
+.navbar-links button:hover,
+.navbar-links button.active {
+  background: var(--light-blue);
+  color: var(--dark-purple);
+}
+  </style>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <img src="logo.png" alt="MarketMinds Logo" id="header-logo" />
+    </div>
+    <div class="navbar-toggle" id="navbar-toggle" aria-label="Open Menu" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="navbar-links" id="navbar-links">
+   <button id="home" data-section="home">Home</button>
+      <script>
+        document.getElementById("home").onclick = function() {
+          window.location.href = "homePage.html";
+        };
+      </script>
+      <button id="aboutus" data-section="aboutUs">About Us</button>
+      <script>
+        document.getElementById("aboutus").onclick = function() {
+          window.location.href = "aboutUs.html";
+        };
+      </script>
+      <button id="events" data-section="events">Events</button>
+      <script>
+        document.getElementById("events").onclick = function() {
+          window.location.href = "events.html";
+        };
+      </script>
+      <button id="leadership" data-section="leadership">Leadership</button>
+      <script>
+        document.getElementById("leadership").onclick = function() {
+          window.location.href = "leaderS_hip.html";
+        };
+      </script>
+      <button id="admissions" data-section="admissions">Admissions</button>
+      <script>
+        document.getElementById("admissions").onclick = function() {
+          window.location.href = "admissions.html";
+        };
+      </script>
+      <button id="chapters" data-section="chapters">Chapters</button>
+      <script>
+        document.getElementById("chapters").onclick = function() {
+          window.location.href = "chapters.html";
+        };
+      </script>
+      <button id="hintonYEA" data-section="hintonYEA">HintonYEA</button>
+      <script>
+        document.getElementById("hintonYEA").onclick = function() {
+          window.location.href = "hintonYEA.html";
+        };
+      </script>
+      <button id="contact" data-section="contact">Contact Us</button>
+      <script>
+        document.getElementById("contact").onclick = function() {
+          window.location.href = "contact.html";
+        };
+      </script>
+
+    </div>
+  </nav>
+</header>
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="eventBanner.jpg" style="width:1000px; margin-left:50px" alt="Events Banner" class="hero-img">
+      <img src="eventBanner.jpg" style="margin-left:50px" alt="Events Banner" class="hero-img">
+      <img src="eventBanner.jpg" style="margin-left:50px" alt="Events Banner" class="hero-img">
+    </div>  
+  </section>
+  <main class="main-flex">
+    <!-- Sidebar -->
+    <nav class="side-menu events-menu" aria-label="Events Menu">
+      <ul>
+        <li><a href="#overview" class="menu-link active">Events/Initiatives</a></li>
+        <li><a href="#pillars" class="menu-link">Pillars Camp 25</a></li>
+        <li><a href="#year2025" class="menu-link">2025 Events</a></li>
+      </ul>
+    </nav>
+    <div class="sections events-sections">
+      <!-- Overview of 2025 Events -->
+      <section id="overview" class="section section-vision">
+        <div class="section-cards-uniform">
+          <div class="section-card-uniform">
+            <h2 class="section-title navy">Overview of 2025 Events</h2>
+            <p class="section-desc">
+              In 2025, MarketMinds is set to host a full slate of workshops, seminars, field trips, and fundraising initiatives designed to sharpen marketing and sales skills. From interactive guest speakers to hands-on competitions, students will gain real-world experiences that extend far beyond the classroom.
+            </p>
+          </div>
+        </div>
+        <div class="section-break"></div>
+        <!-- Open House -->
+        <div class="section-cards-uniform">
+          <div class="section-card-uniform">
+            <h2 class="section-title orange" style="margin-bottom:18px;">Open House</h2>
+            <div class="event-desc-with-img">
+              <img style = "width:200px; height:200px;" src="newopenhouse.png" alt="Open House" class="event-img-main">
+              <div class="event-desc-text">
+                Our first-ever Open House marked the official kickoff of the 2025–26 school year. Attendees participated in engaging, business-themed workshops while learning about MarketMinds’ mission and opportunities. The event also introduced our new Auxiliary Board, giving students a pathway to leadership and involvement. With strong energy and participation, the Open House set the tone for an exciting year ahead.
+              </div>
+            </div>
+          </div>
+          <!-- Event Gallery Carousel -->
+          
+        <div class="section-break"></div>
+        <!-- Basketball Fundraiser -->
+        <div class="section-cards-uniform">
+          <div class="section-card-uniform">
+            <h2 class="section-title orange" style="margin-bottom:18px;">BasketBall Fundraiser</h2>
+            <div class="event-desc-with-img">
+              <img style = "width:200px; height:200px;" src="basketball.jpg" alt="Basketball Fundraiser" class="event-img-main">
+              <div class="event-desc-text">
+                MarketMinds hosted its first Basketball Fundraiser at Fowler Park, where members competed in fast-paced 3v3 teams. Sponsored by Chick-fil-A and featuring a $100 cash prize, the event raised $355 to support future initiatives. This tournament marked the beginning of many creative fundraisers that will help fuel MarketMinds’ growth and community impact.
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </section>
+      <!-- Pillars Camp 2025 -->
+      <section id="pillars" class="section section-pillars">
+        <div class="section-break"></div>
+        <div class="section-cards-uniform">
+          <div class="section-card-uniform">
+            <h2 class="section-title orange">Purpose of Pillars Camp</h2>
+            <div class="event-desc-with-img">
+              <img style = "width:200px; height:200px;" src="pillarmain.jpg" alt="Purpose" class="event-img-main">
+              <div class="event-desc-text">
+                The Pillars Camp was created to give middle school students a strong foundation in marketing and sales before they enter high school. Each session focuses on core pillars—knowing your audience, branding and storytelling, and promotion and advertising—through hands-on activities and workshops. The camp not only builds essential business skills but also helps students gain confidence, creativity, and leadership experience at an early age. By the end of the camp, participants leave with practical knowledge they can apply to future school clubs, competitions, and personal projects.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-left: 61px; height:50px; width:1400px; background: #fff;"></div>
+
+        <!-- Carousel below recap -->
+        <div class="event-gallery-carousel blue-carousel recap-carousel" data-carousel="pillars">
+          <button class="gallery-arrow gallery-arrow-left" aria-label="Previous">&#60;</button>
+          <div class="gallery-images">
+            <img src="image1.jpg" alt="Event Gallery 1" class="event-gallery-img">
+            <img src="image2.jpg" alt="Event Gallery 2" class="event-gallery-img">
+            <img src="image3.jpg" alt="Event Gallery 3" class="event-gallery-img">
+            <img src="image4.jpg" alt="Event Gallery 4" class="event-gallery-img">
+            <img src="image5.jpg" alt="Event Gallery 5" class="event-gallery-img">
+          </div>
+          <button class="gallery-arrow gallery-arrow-right" aria-label="Next">&#62;</button>
+        </div>
+      </section>
+      <!-- Guest Speaker Event: Michael Hall -->
+      <section id="year2025" class="section section-michael">
+        <div class="section-cards-uniform">
+          <div class="section-card-uniform">
+            <h2 class="section-title orange">Guest Speaker Event: Michael Hall</h2>
+            <div class="event-desc-with-img">
+              <div class="event-desc-text">
+                Our next featured event will host Mr. Hall, an International Business teacher at Alliance Academy for Innovation, who will share global perspectives and practical strategies with students. This event marks the start of an exciting guest speaker series.
+              </div>
+            </div>
+          </div>
+      </section>
+    </div>
+  </main>
+  <div style="margin-left: 61px; height:50px; width:1400px; background: #fff;"></div>
+  <footer>
+    <div class="footer-bg"></div>
+    <div class="footer-main-row">
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/joinmarketminds" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+          <span class="footer-social-icon">
+            <img src="logo-insta.png" alt="Instagram" />
+          </span>
+        </a>
+        <a href="https://x.com/joinMarketMinds" style="margin-left: 30px;"class="footer-social-link" aria-label="Twitter" target="_blank" rel="noopener">
+          <span class="footer-social-icon">
+            <img src="x-social-media-round-icon.webp" alt="Instagram" />
+          </span>
+        </a>
+      </div>
+      <div class="footer-center">
+        <img src="marketminds-logo-lightbulb-brain.png" alt="MarketMinds Logo" class="footer-logo" />
+        <div class="footer-center-text">
+          <div class="footer-title">MARKETMINDS</div>
+          <div class="footer-tagline">Drive the Next Big Thing</div>
+        </div>
+      </div>
+      <div class="footer-backtotop-wrap">
+        <a href="#" class="footer-backtotop" id="backtotop-btn">Back to Top</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Sidebar menu highlight and section scroll
+document.querySelectorAll('.menu-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+    const href = this.getAttribute('href');
+    if (href && document.querySelector(href)) {
+      document.querySelector(href).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// IMPROVED GALLERY CAROUSEL
+document.querySelectorAll('.event-gallery-carousel').forEach(function(carousel){
+  const images = Array.from(carousel.querySelectorAll('.event-gallery-img'));
+  const leftArrow = carousel.querySelector('.gallery-arrow-left');
+  const rightArrow = carousel.querySelector('.gallery-arrow-right');
+  let start = 0;
+  const visibleCount = 3;
+  function updateGallery() {
+    images.forEach((img, i) => {
+      img.style.display = (i >= start && i < start + visibleCount) ? 'inline-block' : 'none';
+    });
+    leftArrow.disabled = start === 0;
+    rightArrow.disabled = start >= images.length - visibleCount;
+  }
+  leftArrow.addEventListener('click', function() {
+    if (start > 0) {
+      start--;
+      updateGallery();
+    }
+  });
+  rightArrow.addEventListener('click', function() {
+    if (start < images.length - visibleCount) {
+      start++;
+      updateGallery();
+    }
+  });
+  updateGallery();
+});
+
+// Back to top button
+document.getElementById('backtotop-btn').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
+
+// Mobile nav toggle
+const navbarToggle = document.getElementById('navbar-toggle');
+const navbarLinks = document.getElementById('navbar-links');
+navbarToggle && navbarToggle.addEventListener('click', () => {
+  navbarLinks.classList.toggle('open');
+});
+navbarToggle && navbarToggle.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    navbarLinks.classList.toggle('open');
+  }
+});
+window.addEventListener('resize', () => {
+  if(window.innerWidth > 860) navbarLinks.classList.remove('open');
+});
+  </script>
+</body>
+</html>

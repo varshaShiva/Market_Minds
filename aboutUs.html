@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us: MarketMinds</title>
+  <style>
+        :root {
+  --dark-purple: #14034C;
+  --light-blue: #50ABFF;
+  --yellow: #FDC22B;
+  --orange: #FF914D;
+  --white: #FFFFFF;
+  --navy-blue: #1A4091;
+  --gray-bg: #FFFFFF;
+  --font-main: 'Montserrat', Arial, sans-serif;
+  --transition: 0.3s cubic-bezier(0.4,0.1,0.2,1);
+  --main-content-width: 1100px;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background: #fff;
+  color: var(--dark-purple);
+  scroll-behavior: smooth;
+  min-width: 0;
+  width: 100%;
+}
+header {
+  background: var(--dark-purple);
+  color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px 0 rgba(20,3,76,0.08);
+}
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+}
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+.navbar-logo img {
+  height: 44px;
+  width: auto;
+  border-radius: 8px;
+  background: var(--white);
+  object-fit: contain;
+  box-shadow: 0 2px 8px 0 rgba(20,3,76,0.08);
+}
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.navbar-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  transition: color var(--transition);
+  position: relative;
+  padding: 0.25em 0.5em;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.navbar-links a.active, .navbar-links a:hover {
+  background: var(--light-blue);
+  color: var(--dark-purple);
+}
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  margin-left: 1rem;
+}
+.navbar-toggle span {
+  display: block;
+  height: 4px;
+  width: 28px;
+  background: var(--white);
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+@media (max-width: 860px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+  .navbar-links {
+    position: absolute;
+    right: 0;
+    top: 64px;
+    flex-direction: column;
+    background: var(--dark-purple);
+    width: 100vw;
+    max-width: 320px;
+    gap: 0.5rem;
+    box-shadow: 0 6px 24px 0 rgba(20,3,76,0.13);
+    display: none;
+    align-items: flex-start;
+    padding: 1.5rem 2rem 2rem 2rem;
+  }
+  .navbar-links.open {
+    display: flex;
+  }
+  .navbar-toggle {
+    display: flex;
+  }
+}
+footer {
+  background: #0D2B6D;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  height: 150px;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: url('classroom-footer.jpg') center/cover no-repeat;
+  opacity: 0.65;
+  mix-blend-mode: multiply;
+  z-index: 0;
+  pointer-events: none;
+}
+.footer-main-row {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 110px;
+  min-height: 0;
+}
+.footer-socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-left: 20px;
+}
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-social-icon {
+  background: transparent;
+  border-radius: 8px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.footer-social-icon img {
+  width: 80px;
+  height: 80px;
+  display: block;
+  background: none;
+  border-radius: 0;
+}
+.footer-social-link:hover .footer-social-icon,
+.footer-social-link:focus .footer-social-icon {
+  border-color: #d9e8ff;
+  background: #232b53;
+}
+.footer-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-logo {
+  width: 100px;
+  height: auto;
+  margin-right: 16px;
+}
+.footer-center-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.footer-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.07em;
+  line-height: 1.1;
+  margin-bottom: 2px;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.footer-tagline {
+  font-size: 16px;
+  font-weight: 600;
+  color: #d9e8ff;
+  letter-spacing: 0.01em;
+  margin-top: 3px;
+}
+.footer-backtotop-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+  height: 100%;
+}
+.footer-backtotop {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 2px;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.footer-backtotop:hover,
+.footer-backtotop:focus {
+  color: #d9e8ff;
+  text-decoration: underline;
+}
+@media (max-width: 900px) {
+  .footer-main-row {
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    height: auto;
+    width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .footer-socials, .footer-backtotop-wrap {
+    padding: 0;
+  }
+  .footer-center {
+    margin-bottom: 4px;
+  }
+  .footer-logo {
+    width: 70px;
+  }
+  .footer-title {
+    font-size: 18px;
+  }
+  .footer-tagline {
+    font-size: 13px;
+  }
+}
+/* HERO */
+.hero {
+  width: 100%;
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, var(--dark-purple) 60%, var(--light-blue) 100%);
+  overflow: visible;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero {
+  width: 100%;
+  position: relative;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, var(--dark-purple) 60%, var(--light-blue) 100%);
+  overflow: visible;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* FLEX and SIDEBAR */
+.main-flex {
+  display: flex;
+  flex-direction: row;
+  max-width: 1400px;
+  margin: 0 auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100vw;
+  min-height: 800px;
+  background: var(--gray-bg);
+}
+.side-menu {
+  min-width: 160px;
+  width: 180px;
+  margin: 60px 32px 0 32px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(26,64,145,0.09);
+  padding: 24px 14px;
+  height: fit-content;
+  font-family: var(--font-main);
+  position: sticky;
+  top: 120px;
+}
+.side-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.side-menu li {
+  margin-bottom: 10px;
+}
+.menu-link {
+  display: block;
+  color: #1A4091;
+  font-size: 1.08rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 7px 13px;
+  transition: background 0.2s, color 0.2s;
+}
+.menu-link.active, .menu-link:hover {
+  background: #FDC22B;
+  color: #14034C;
+  font-weight: 900;
+}
+
+/* UNIFORM SECTION LAYOUT */
+.sections {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  margin-top: 60px;
+}
+.section-cards-uniform {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  align-items: center;
+  width: 100%;
+}
+.section-card-uniform {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 4px 18px 0 rgba(26,64,145,0.07);
+  padding: 36px 38px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 720px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section-title {
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: var(--font-main);
+  margin-bottom: 18px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.section-title.navy { color: #1A4091; }
+.section-title.orange { color: #FF914D; }
+.section-title.honor-orange { color: #FF914D; margin-bottom: 0; }
+.section-desc {
+  color: #14034C;
+  font-size: 1.15rem;
+  font-family: var(--font-main);
+  text-align: center;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+.section-break {
+  width: 1100px;
+  max-width: none;
+  height: 5px;
+  margin: 48px 0 24px 0;
+  background: linear-gradient(90deg, #1A4091 0%, #8b8b6f 60%, #FDC22B 100%);
+  border-radius: 2px;
+  display: block;
+}
+
+/* Purpose, Unique, Structure (inside uniform box) */
+.purpose-flex, .unique-flex {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.purpose-img {
+  width: 160px;
+  min-width: 100px;
+  height: 100px;
+  border-radius: 16px;
+  background: #e9eff9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+}
+
+/* UNIQUE APPROACH IMAGES */
+.unique-imgs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 60px 60px;
+  gap: 14px;
+  align-items: center;
+  justify-items: center;
+}
+.unique-imgs img {
+  width: 84px;
+  height: 60px;
+  object-fit: contain;
+  background: #e9eff9;
+  border-radius: 12px;
+}
+
+/* STRUCTURE CARDS */
+.structure-cards {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 22px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+.structure-card {
+  background: #50ABFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px 0 rgba(80,171,255,0.13);
+  padding: 16px 14px 18px 14px;
+  min-width: 160px;
+  max-width: 230px;
+  color: #fff;
+  font-family: var(--font-main);
+  box-sizing: border-box;
+}
+.structure-card-title {
+  font-weight: 900;
+  font-size: 1.08rem;
+  background: #1A4091;
+  color: #fff;
+  border-radius: 8px;
+  padding: 4px 0;
+  margin-bottom: 13px;
+  text-align: center;
+}
+.structure-card-body {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fff;
+}
+
+/* HONOR CODE SECTION */
+.honor-list {
+  margin: 28px auto 0 auto;
+  max-width: 700px;
+  width: 100%;
+}
+.honor-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.honor-letter {
+  font-size: 2.3rem;
+  font-weight: 900;
+  font-family: var(--font-main);
+  width: 62px;
+  text-align: center;
+  line-height: 2.1rem;
+  margin-top: 2px;
+  min-width: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.honor-letter.purple { color: #7d20b2; }
+.honor-letter.navy { color: #1A4091; }
+.honor-letter.blue { color: #50ABFF; }
+.honor-letter.yellow { color: #FDC22B; }
+.honor-letter.orange { color: #FF914D; }
+.honor-card {
+  background: #50ABFF;
+  border-radius: 12px;
+  padding: 8px 22px 12px 22px;
+  color: #fff;
+  box-shadow: 0 2px 8px 0 rgba(80,171,255,0.13);
+  flex: 1;
+}
+.honor-title {
+  font-weight: 700;
+  font-size: 1.13rem;
+  margin-bottom: 4px;
+  color: #fff;
+  font-family: var(--font-main);
+}
+.honor-body {
+  font-size: 1rem;
+  font-family: var(--font-main);
+  font-weight: 500;
+}
+
+/* FAQ SECTION */
+.email-btn {
+  display: inline-block;
+  font-family: var(--font-main);
+  font-size: 1.02rem;
+  background: #1A4091;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 28px;
+  font-weight: 700;
+  margin-top: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.email-btn:hover, .email-btn:focus {
+  background: #FDC22B;
+  color: #14034C;
+}
+.faq-accordion {
+  margin-top: 24px;
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.faq-item {
+  background: #1A4091;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px 0 rgba(26,64,145,0.13);
+}
+.faq-item.open {
+  background: #fff;
+  border: 2px solid #1A4091;
+}
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1.09rem;
+  font-weight: 700;
+  padding: 12px 18px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: color 0.2s, background 0.2s;
+}
+.faq-item.open .faq-question {
+  color: #1A4091;
+  background: #fff;
+}
+.faq-arrow {
+  font-size: 1.2rem;
+  margin-left: auto;
+  font-weight: 900;
+}
+.faq-answer {
+  display: none;
+  padding: 12px 18px 16px 18px;
+  background: #fff;
+  color: #1A4091;
+  font-size: 1.05rem;
+  font-family: var(--font-main);
+  font-weight: 500;
+  border-top: 1px solid #c6d6f6;
+  animation: fadeIn 0.23s;
+}
+.faq-item.open .faq-answer {
+  display: block;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+
+.navbar-links button {
+  background: none;
+  border: none;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  transition: color var(--transition), background var(--transition);
+  position: relative;
+  padding: 0.25em 0.5em;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+}
+
+.navbar-links button:hover,
+.navbar-links button.active {
+  background: var(--light-blue);
+  color: var(--dark-purple);
+}
+  </style>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <img src="logo.png" alt="MarketMinds Logo" id="header-logo" />
+    </div>
+    <div class="navbar-toggle" id="navbar-toggle" aria-label="Open Menu" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="navbar-links" id="navbar-links">
+   <button id="home" data-section="home">Home</button>
+      <script>
+        document.getElementById("home").onclick = function() {
+          window.location.href = "homePage.html";
+        };
+      </script>
+      <button id="aboutus" data-section="aboutUs">About Us</button>
+      <script>
+        document.getElementById("aboutus").onclick = function() {
+          window.location.href = "aboutUs.html";
+        };
+      </script>
+      <button id="events" data-section="events">Events</button>
+      <script>
+        document.getElementById("events").onclick = function() {
+          window.location.href = "events.html";
+        };
+      </script>
+      <button id="leadership" data-section="leadership">Leadership</button>
+      <script>
+        document.getElementById("leadership").onclick = function() {
+          window.location.href = "leaderS_hip.html";
+        };
+      </script>
+      <button id="admissions" data-section="admissions">Admissions</button>
+      <script>
+        document.getElementById("admissions").onclick = function() {
+          window.location.href = "admissions.html";
+        };
+      </script>
+      <button id="chapters" data-section="chapters">Chapters</button>
+      <script>
+        document.getElementById("chapters").onclick = function() {
+          window.location.href = "chapters.html";
+        };
+      </script>
+      <button id="hintonYEA" data-section="hintonYEA">HintonYEA</button>
+      <script>
+        document.getElementById("hintonYEA").onclick = function() {
+          window.location.href = "hintonYEA.html";
+        };
+      </script>
+      <button id="contact" data-section="contact">Contact Us</button>
+      <script>
+        document.getElementById("contact").onclick = function() {
+          window.location.href = "contact.html";
+        };
+      </script>
+
+    </div>
+  </nav>
+</header>
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="aboutUs.jpg" alt="About Us Banner" class="hero-img">
+      <img src="aboutUs.jpg" alt="About us Banner" class="hero-img">
+      <img src="aboutUs.jpg" alt="About us Banner" class="hero-img">
+    </div>  
+  </section>
+  <main>
+    <!-- MAIN FLEX LAYOUT -->
+    <main class="main-flex">
+        <!-- SIDEBAR MENU (moved away from edge, neat spacing) -->
+        <nav class="side-menu" aria-label="Section navigation">
+          <ul>
+            <li><a href="#vision" class="menu-link active">About Us</a></li>
+            <li><a href="#vision" class="menu-link">Our Vision</a></li>
+            <li><a href="#honor" class="menu-link">Honor Code</a></li>
+            <li><a href="#faq" class="menu-link">FAQ</a></li>
+          </ul>
+        </nav>
+        <div class="sections">
+          <!-- OUR VISION SECTION (all boxes uniform width and alignment) -->
+          <section id="vision" class="section section-vision">
+            <div class="section-cards-uniform">
+              <div class="section-card-uniform">
+                <h2 class="section-title navy">Our Mission Statement</h2>
+                <p class="section-desc">“To expose students worldwide to hands-on marketing
+                  <br>
+                  and business education, nurturing their confidence, <br>
+                  creativity, and potential for future success.”</p>
+              </div>
+              <div class="section-card-uniform">
+                <h2 class="section-title navy">Our Purpose</h2>
+                <div class="purpose-flex">
+                  <img style="height: max-content; width: max-content;" src="ourPurpose.jpg" alt="Purpose Art" class="purpose-img">
+                  <p class="section-desc">
+                    MarketMinds was created to eliminate the challenges many freshmen and sophomores face when entering high school, such as a lack of guidance in extracurriculars, awards, and leadership opportunities. By starting earlier, we give middle school students the tools and confidence to excel from day one.
+                  </p>
+                </div>
+              </div>
+              <div class="section-card-uniform">
+                <h2 class="section-title navy">Our Unique Approach</h2>
+                <div class="unique-flex">
+                  <div class="unique-body">
+                    <p class="section-desc">
+                      We focus on middle schoolers, a group often overlooked in traditional business programs. Through a variety of events—ranging from workshops and competitions to guest speakers and fundraisers—we provide practical skills and early exposure that set our members apart.
+                    </p>
+                  </div>
+                  <div class="unique-imgs">
+                    <img style=" margin-right: 150px; height: 100px; width: max-content;" src="unique1.jpg" alt="Approach 1"/>
+                    <img style="height: 100px; width: max-content;" src="unique2.jpg" alt="Approach 2"/>
+                    <img style="height: 100px; width: max-content; margin-left: 255px; margin-bottom: 150px;" src="unique3.jpg" alt="Approach 3"/>
+                  </div>
+                </div>
+              </div>
+              <div class="section-card-uniform">
+                <h2 class="section-title navy">Our Structure</h2>
+                <div class="structure-cards">
+                  <div class="structure-card">
+                    <div class="structure-card-title">Leadership</div>
+                    <div class="structure-card-body">
+                      Our multi-layered leadership model gives students opportunities at every level. The High School Directory Board sets vision and strategy, while Middle School Officers lead chapters, and Auxiliary Board members gain hands-on training. This structure allows students to grow step by step into confident leaders.
+
+                    </div>
+                  </div>
+                  <div class="structure-card">
+                    <div class="structure-card-title">Events</div>
+                    <div class="structure-card-body">
+                      MarketMinds offers a wide range of experiences, including interactive workshops, chapter competitions, guest speaker seminars, educational field trips, and engaging fundraisers. Every event is designed to connect theory with practice, ensuring students develop meaningful skills while having fun.
+                    </div>
+                  </div>
+                  <div class="structure-card">
+                    <div class="structure-card-title">Mentors & Partners</div>
+                    <div class="structure-card-body">
+                      We are proud to be supported by professionals and companies that bring real-world expertise to our students. Partners like Chick-fil-A and Chesstronics, along with local educators and business leaders, provide mentorship, sponsorship, and valuable industry insights.
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="section-card-uniform">
+                <h2 class="section-title orange" style="margin-top: 0;">“Why We’re Different”</h2>
+                <div class="purpose-flex">
+                  <img style="height: max-content; width: max-content;" src="different.jpg" alt="Why We're Different Art" class="purpose-img">
+                  <p class="section-desc">
+                    Unlike large CTSOs, where leadership can be diluted among thousands of officers, MarketMinds offers niche, impactful roles that stand out on resumes and college applications. Our emphasis extends beyond competitions, ensuring students gain experience through diverse, hands-on events that mirror the real world.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="section-break"></div>
+          </section>
+    
+          <!-- HONOR CODE SECTION (Uniform width) -->
+          <section id="honor" class="section section-honor">
+            <div class="section-cards-uniform">
+              <div class="section-card-uniform">
+                <h2 class="section-title honor-orange">MarketMinds Honor Code</h2>
+              </div>
+              <div class="honor-list">
+                <div class="honor-row">
+                  <span class="honor-letter purple">M</span>
+                  <div class="honor-card">
+                    <div class="honor-title">Mastery</div>
+                    <div class="honor-body">Commit to excellence by constantly refining your skills and pushing beyond limits.
+                    </div>
+                  </div>
+                </div>
+                <div class="honor-row">
+                  <span class="honor-letter navy">A</span>
+                  <div class="honor-card">
+                    <div class="honor-title">Ambition</div>
+                    <div class="honor-body">Dream big, set bold goals, and pursue them with unstoppable drive.
+                    </div>
+                  </div>
+                </div>
+                <div class="honor-row">
+                  <span class="honor-letter blue">R</span>
+                  <div class="honor-card">
+                    <div class="honor-title">Respect</div>
+                    <div class="honor-body">Uplift others by valuing every voice, perspective, and contribution.
+                    </div>
+                  </div>
+                </div>
+                <div class="honor-row">
+                  <span class="honor-letter yellow">K</span>
+                  <div class="honor-card">
+                    <div class="honor-title">Knowledge</div>
+                    <div class="honor-body"> Seek learning relentlessly and use it to innovate and lead.
+                    </div>
+                  </div>
+                </div>
+                <div class="honor-row">
+                  <span class="honor-letter orange">E</span>
+                  <div class="honor-card">
+                    <div class="honor-title">Empathy</div>
+                    <div class="honor-body">Lead with compassion, understanding the needs and struggles of others.
+                    </div>
+                  </div>
+                </div>
+                <div class="honor-row">
+                  <span class="honor-letter purple">T</span>
+                  <div class="honor-card">
+                    <div class="honor-title">Tenacity</div>
+                    <div class="honor-body">Never back down from challenges; persistence is the engine of success.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="section-break"></div>
+          </section>
+    
+          <!-- FAQ SECTION (Uniform width) -->
+          <section id="faq" class="section section-faq">
+            <div class="section-cards-uniform">
+              <div class="section-card-uniform">
+                <h2 class="section-title navy">FAQ</h2>
+                <p class="section-desc">
+                  Our FAQ page answers the most common questions about MarketMinds, from membership to events. For anything not covered, reach out directly to directorboard@joinmarketminds.org with your questions or concerns.
+                </p>
+                <button class="email-btn">EMAIL</button>
+              </div>
+              <div class="faq-accordion">
+                <div class="faq-item open">
+                  <button class="faq-question navy">1. What is MarketMinds?
+                    <span class="faq-arrow">&#9650;</span></button>
+                  <div class="faq-answer">MarketMinds is a high school–led nonprofit that provides middle school students with hands-on experience in marketing, sales, and leadership through events, workshops, and competitions.
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question navy">2. Who can join MarketMinds? <span class="faq-arrow">&#9660;</span></button>
+                  <div class="faq-answer">Any middle school student interested in developing business, communication, and leadership skills is welcome to join. No prior experience is required.
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question navy">3. Is MarketMinds only for students in Forsyth County? <span class="faq-arrow">&#9660;</span></button>
+                  <div class="faq-answer">No. While we started in Forsyth, MarketMinds is expanding rapidly, with chapters planned across Georgia and in other states.
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question navy">4. How much does it cost to be a member?
+                    <span class="faq-arrow">&#9660;</span></button>
+                  <div class="faq-answer">Membership is free. Some events may have small optional costs, but MarketMinds is committed to making opportunities accessible to all.
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question navy">5. What types of events does MarketMinds host? <span class="faq-arrow">&#9660;</span></button>
+                  <div class="faq-answer">We organize interactive workshops, competitions, guest speaker sessions, fundraisers, and field trips that give students real-world exposure to marketing and sales.
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question navy">6. How is MarketMinds different from FBLA or DECA? <span class="faq-arrow">&#9660;</span></button>
+                  <div class="faq-answer">Unlike large CTSOs, MarketMinds is niche and middle-school-focused, meaning members get more leadership opportunities and a wider variety of activities beyond competitions.
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question navy">7. How is MarketMinds structured? <span class="faq-arrow">&#9660;</span></button>
+                  <div class="faq-answer">Our leadership model includes a High School Directory Board, a Middle School Officer Board, and a Middle School Auxiliary Board. This layered system creates pathways for students to grow into leadership roles.
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question navy">8. Can parents get involved?<span class="faq-arrow">&#9660;</span></button>
+                  <div class="faq-answer">Yes. Parents often support us through volunteering at events, mentoring, or connecting MarketMinds with community partners and sponsors.
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question navy">9. Who are MarketMinds’ mentors and partners?
+                    <span class="faq-arrow">&#9660;</span></button>
+                  <div class="faq-answer">We collaborate with professionals and local businesses who guide our members and support events, ensuring students learn directly from industry experts.
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-question navy">10. How do I start a MarketMinds chapter in my region? <span class="faq-arrow">&#9660;</span></button>
+                  <div class="faq-answer">Reach out to @marketmindsdirectory for the application process. We provide all the resources, training, and support needed to launch and run a successful chapter.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <!-- FOOTER (copied exactly from your original code) -->
+      <div style="margin-left: 61px; height:50px; width:1400px; background: #fff;"></div>
+    <!-- FOOTER -->
+    <div style="height: 50px; background: #fff;"></div>
+    <footer>
+      <div class="footer-bg"></div>
+      <div class="footer-main-row">
+        <!-- Left: Instagram Icon Only -->
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/joinmarketminds" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+            <span class="footer-social-icon">
+              <img src="logo-insta.png" alt="Instagram" />
+            </span>
+          </a>
+          <a href="https://x.com/joinMarketMinds" style="margin-left: 30px;"class="footer-social-link" aria-label="Twitter" target="_blank" rel="noopener">
+            <span class="footer-social-icon">
+              <img src="x-social-media-round-icon.webp" alt="Instagram" />
+            </span>
+          </a>
+        </div>
+        <!-- Center: Logo + Text -->
+        <div class="footer-center">
+          <img src="marketminds-logo-lightbulb-brain.png" alt="MarketMinds Logo" class="footer-logo" />
+          <div class="footer-center-text">
+            <div class="footer-title">MARKETMINDS</div>
+            <div class="footer-tagline">Drive the Next Big Thing</div>
+          </div>
+        </div>
+        <!-- Right: Back to Top -->
+        <div class="footer-backtotop-wrap">
+          <a href="#" class="footer-backtotop" id="backtotop-btn">Back to Top</a>
+        </div>
+      </div>
+    </footer>  
+    <script>
+        // Sidebar section highlight and scroll
+document.querySelectorAll('.menu-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+    const href = this.getAttribute('href');
+    if (href && document.querySelector(href)) {
+      document.querySelector(href).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// FAQ accordion open/close
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-question').addEventListener('click', function() {
+    if (item.classList.contains('open')) {
+      item.classList.remove('open');
+      item.querySelector('.faq-arrow').innerHTML = '&#9660;';
+    } else {
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-arrow').innerHTML = '&#9660;';
+      });
+      item.classList.add('open');
+      item.querySelector('.faq-arrow').innerHTML = '&#9650;';
+    }
+  });
+});
+
+// Back to top button
+document.getElementById('backtotop-btn').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
+
+// Mobile nav toggle
+const navbarToggle = document.getElementById('navbar-toggle');
+const navbarLinks = document.getElementById('navbar-links');
+navbarToggle && navbarToggle.addEventListener('click', () => {
+  navbarLinks.classList.toggle('open');
+});
+navbarToggle && navbarToggle.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    navbarLinks.classList.toggle('open');
+  }
+});
+window.addEventListener('resize', () => {
+  if(window.innerWidth > 860) navbarLinks.classList.remove('open');
+});
+  </script>
+</body>
+</html>
